@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My E-Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      background-color: #f9f9f9;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: #59e24a;
+      color: #fff;
+      padding: 50px 0;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 3.5em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-size: 1.2em;
+    }
+
+    nav {
+      background-color: #333;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 15px 20px;
+      display: inline-block;
+      transition: background-color 0.3s;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      background-color: #59e24a;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5em;
+      color: #59e24a;
+    }
+
+    .about,
+    .skills,
+    .contact {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+
+    .portfolio {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .portfolio-item {
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s;
+    }
+
+    .portfolio-item img:hover {
+      transform: scale(1.05);
+    }
+
+    .portfolio-item .content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .skills ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .skills ul li {
+      background-color: #59e24a;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+
+    .contact p {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.9em;
+    }
+
+    /* Video Section Styling */
+    .video-container {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .video-description {
+      margin-top: 15px;
+      font-size: 1.2em;
+      color: #333;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5em;
+      }
+
+      header p {
+        font-size: 1.1em;
+      }
+
+      nav a {
+        padding: 12px 15px;
+      }
+
+      section h2 {
+        font-size: 2em;
+      }
+
+      .skills ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .portfolio-item img {
+        height: 250px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      section h2 {
+        font-size: 1.8em;
+      }
+
+      .portfolio-item {
+        transform: scale(0.95);
+      }
+    }
+    /* Download Resume Button Styling */
+#download-resume {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.btn-download {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #59e24a;  /* Green background */
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2em;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-download:hover {
+  background-color: #4a9e3c; 
+  transform: translateY(-3px);
+}
+
+.btn-download:active {
+  transform: translateY(1px);
+}
+  </style>
+</head>
+      <style>
+        * 
+.profile-photo {
+  width: 150px; 
+  height: 150px; 
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 20px;
+}
+        {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+    
+        body {
+          font-family: 'Poppins', sans-serif;
+          color: #333;
+          background-color: #f9f9f9;
+          line-height: 1.6;
+        }
+    
+        header {
+          background-color: #e14af5;
+          color: #fff;
+          padding: 40px 0;
+          text-align: center;
+        }
+    
+        header h1 {
+          font-size: 3em;
+          margin-bottom: 10px;
+        }
+    
+        header p {
+          font-size: 1.2em;
+        }
+    
+        nav {
+          background-color: #333;
+          text-align: center;
+        }
+    
+        nav a {
+          color: #fff;
+          text-decoration: none;
+          padding: 15px 20px;
+          display: inline-block;
+          transition: background-color 0.3s;
+        }
+    
+        nav a:hover {
+          background-color: #e14af5;
+        }
+    
+        section {
+          padding: 60px 20px;
+          max-width: 1000px;
+          margin: auto;
+        }
+    
+        section h2 {
+          text-align: center;
+          margin-bottom: 30px;
+          font-size: 2.5em;
+          color: #e14af5;
+        }
+    
+        .about,
+        .skills,
+        .contact {
+          background-color: #fff;
+          border-radius: 8px;
+          padding: 30px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    
+        .portfolio {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 20px;
+        }
+    
+        .portfolio-item {
+          background-color: #fff;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s;
+        }
+    
+        .portfolio-item:hover {
+          transform: translateY(-5px);
+        }
+    
+        .portfolio-item img {
+          width: 100%;
+          display: block;
+        }
+    
+        .portfolio-item .content {
+          padding: 20px;
+        }
+    
+        .skills ul {
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 15px;
+        }
+    
+        .skills ul li {
+          background-color: #e14af5;
+          color: #fff;
+          padding: 10px 20px;
+          border-radius: 20px;
+          font-size: 1em;
+        }
+    
+        .contact p {
+          text-align: center;
+          margin-bottom: 10px;
+        }
+    
+        footer {
+          background-color: #333;
+          color: #fff;
+          text-align: center;
+          padding: 20px 0;
+          font-size: 0.9em;
+        }
+    
+        /* Video Section Styling */
+        .video-container {
+          background-color: #fff;
+          border-radius: 8px;
+          padding: 30px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          margin-bottom: 40px;
+        }
+    
+        .video-container video {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+        }
+    
+        .video-description {
+          margin-top: 15px;
+          text-align: center;
+          font-size: 1.1em;
+        }
+    
+        /* Responsive */
+        @media (max-width: 600px) {
+          header h1 {
+            font-size: 2em;
+          }
+    
+          section h2 {
+            font-size: 2em;
+          }
+        }
+        /* Resume Section Styling */
+#resume {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+#resume h2 {
+  color: #e14af5;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+#resume p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+#download-resume {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.btn-download {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #e14af5;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2em;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-download:hover {
+  background-color: #4a9e3c;
+  transform: translateY(-3px);
+}
+
+.btn-download:active {
+  transform: translateY(1px);
+}
+
+      </style>
+    </head>
+    
+    <body>
+    
+      <header>
+        <h1>Akanksha Malik</h1>
+        <p>Web Developer</p>
+        <!-- Add your photo -->
+        <img src="Image.JPG" alt="Akanksha Malik" class="profile-photo">
+      </header>
+      
+    
+      <nav>
+        <a href="#about">About Me</a>
+        <a href="#intro-video">Self Intro</a>
+        <a href="#resume">Resume</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    
+      <!-- About Me Section -->
+      <section id="about" class="about">
+        <h2>About Me</h2>
+        <p>Welcome to my e-portfolio! My name is Akanksha Malik, and I am a Student passionate about creating innovative designs, solving complex problems, lifelong learning. This portfolio showcases my skills, experiences, and projects, reflecting my Learnings in PESE. Explore my work to see how I blend creativity, expertise, and a commitment to growth in everything I do.</p>
+      </section>
+
+      <!-- 25-Line Introduction Section -->
+<section id="line-intro" class="about">
+  <h2>25-Line Introduction</h2>
+  <p>Akanksha, a software engineer proficient in multiple programming languages, with strong teamwork and management skills. I thrive in problem-solving, innovation,delivering efficient software solutions.
+  </p>
+</section>
+
+    
+      <!-- Self Introduction Video Section -->
+      <section id="intro-video" class="video-container">
+        <h2>Self Introduction Video</h2>
+        <video controls>
+          <source src="MyIntroVideo.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p class="video-description"> Welcome to My E-Portfolio
+          Guided by the Five Ring Framework, my personal theory, this portfolio reflects my journey through five interconnected elements: Identity, Environment, Learning, Relationships, and Purpose. Each ring seamlessly connects to the next, forming a continuous cycle of growth and impact. Through this lens, I present my experiences and aspirations—showcasing how these five elements shape who I am and where I'm headed.
+          Identity – The Core of My Journey
+          "I’m Akanksha Malik, a student fueled by passion and purpose."
+           Identity is the foundation of my Five Ring cycle. My name represents where my journey begins and where it always returns.
+          Place–"Based in Meerut, a city known for its rich history and resilience."
+           Environment plays a vital role in shaping my outlook. My surroundings provide the context that anchors my growth within the Five Ring flow.
+          Education– 
+          "Educated at Graphic Era Hill University, where I honed critical thinking and creativity."
+           Learning is the third ring, fueling my skills and connecting my roots to my ambitions. It bridges my past experiences with my future aspirations.
+          Relationships –
+          "Guided and supported by my parents and siblings, who keep me grounded and push me forward."
+           Relationships form the fourth ring, linking my past and present. My family’s unwavering support fuels my drive and resilience.
+          Purpose – Creating Impact
+          "I aim to innovate, inspire, and transform my passions into meaningful impact."
+           Purpose is the final ring, completing the Five Ring cycle by directing my efforts toward a future I envision—one where I make a difference. Akanksha, a software engineer proficient in multiple programming languages, with strong teamwork and management skills. I thrive in problem-solving, innovation,delivering efficient software solutions.”</p>
+      </section>
+    
+      <!-- Sixer Theory  -->
+      <section id="sixer-theory" class="video-container">
+        <h2>Sixer Theory</h2>
+        <video controls>
+          <source src="Sixer theory.MP4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p class="video-description">Welcome to my e-portfolio, guided by Sixer Theory—a personal framework where six interconnected nodes shape my journey: identity, context, knowledge, connections, action, and vision. Each node links to the next, forming a dynamic cycle of discovery and impact. Through this lens, I present my experiences and aspirations, showcasing how these six elements define who I am, how I grow, and where I’m headed. 
+          NAME:
+          "I’m Akanksha Malik, a student driven by curiosity and connection."
+          Explanation: "In Sixer Theory, identity is the first node—my name reflects the starting point of a six-step journey toward impact, where every action builds on who I am."
+          PLACE:
+          "Based in Meerut, Hailing from Meerut, I draw inspiration from its rich history, vibrant culture, and dynamic spirit.."
+          Explanation: "Place is the second node in Sixer Theory, grounding my work in a context that shapes my perspective and fuels the next steps of creativity."
+          EDUCATION:
+          "Currently pursuing my BTech in Computer Science at Graphic Era Hill University, I have developed strong analytical, technical, and management skills."
+          Explanation: "Education forms the third node of Sixer Theory, equipping me with the tools and knowledge to connect ideas across six stages of growth."
+          RECENTLY:
+          "Recently, I’ve been exploring Sixer Theory, linking ideas through six key steps."
+          Explanation: "This fourth node is about reflection—Sixer Theory helps me analyze recent efforts, tracing how six inf3luences turn experiments into insights."
+          CAREER OBJECTIVE:
+          "My goal is to create impactful solutions, using Sixer Theory to connect and innovate."
+          Explanation: "Aspiration is the fifth node; Sixer Theory guides my career by mapping six critical links between where I am and the change I want to make."
+          HOBBY:
+          "In my downtime, I workout, code,  refining skills that shape my six-step approach
+          Explanation: "Hobbies are the sixth node in Sixer Theory, completing the cycle by sharpening abilities that feed back into my broader goals."</p>
+      </section>
+    
+      <!-- Movie Review Video -->
+<section id="movie-review" class="video-container">
+  <h2>Movie Review Video</h2>
+  <video controls>
+    <!-- Ensure the path to the video is correct -->
+    <source src="MovieReview.mp4" type="video/mp4">
+    <!-- Fallback text if the browser doesn't support the video tag -->
+    Your browser does not support the video tag.
+  </video>
+  <p class="video-description">I'll go with The Shawshank Redemption! It's a timeless classic with deep themes of hope, resilience, and friendship.
+    <br>1) Favorite Dialogue and Why?
+    "Hope is a good thing, maybe the best of things, and no good thing ever dies." – Andy Dufresne
+    This line perfectly captures the essence of the movie. Despite years of wrongful imprisonment, Andy never loses hope. It’s a powerful reminder that no matter how tough life gets, hope can keep us moving forward.<br>
+    <br>    2) Personal Review-
+    This film is one of the greatest of all time. The storytelling, the acting (especially Morgan Freeman as Red), and the way the plot unfolds make it truly compelling. It’s a slow burn but leaves a lasting impact. The bond between Andy and Red is heartwarming, and the ending is deeply satisfying. I’d give it a solid 10/10.<br>
+    <br>3) Learning to Take Away from the Movie
+    <br>•	Patience and resilience can get you through the darkest times.<br>
+    <br>•	True friendships can form even in the harshest circumstances.<br>
+    <br>•	Justice doesn’t always come immediately, but perseverance can lead to eventual victory.<br>
+    <br>•	The importance of hope—as Red realizes at the end, life without hope is no life at all.<br>
+    <br>4) Related Concepts Learned in the Classroom<br>
+    <br>•	Psychology & Human Behavior: The film explores institutionalization (like Brooks' struggle to adapt after release) and how humans react to long-term confinement.
+    <br>•	Law & Ethics: It brings up themes of corruption within the justice system and the ethical dilemmas surrounding crime and punishment.
+    <br>•	Project Management & Planning: Andy’s long-term escape plan showcases patience, meticulous planning, and problem-solving skills—something applicable even in software engineering!</p>
+</section>
+    
+      <!-- 1 vs 64 Learning Outcome Video -->
+      <section id="one-vs-sixtyfour" class="video-container">
+        <h2>1 vs 64 - Learning Outcome</h2>
+        <video controls>
+          <source src="1-vs-64.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <p class="video-description">Sharing insights and lessons learned from the 1 vs 64 activity.</p>
+      </section>
+    
+      <!-- Skills Section -->
+      <section id="skills" class="skills">
+        <h2>Skills</h2>
+        <ul>
+          <li>HTML5</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>React</li>
+          <li>Node.js</li>
+        </ul>
+      </section>
+
+      <!-- Resume Section -->
+<section id="resume">
+  <h2>Resume</h2>
+  <p>Resume 
+    Welcome to my guide on resume writing—a craft that blends clarity, strategy, and personal storytelling. A resume is more than a document; it’s a snapshot of your journey, designed to connect your skills and experiences to opportunity. In this section, I break down the essentials of creating an impactful resume, from highlighting strengths to tailoring details, all to help you stand out and move forward. In refining my resume-writing skills, I’ve learned to: tailor content to job-specific needs, quantify achievements like 'Cut processing time by 25%,' and optimize for ATS with strategic keywords—all while maintaining a clean, professional format</p>
+  <p>Click the button below to download my resume:</p>
+  <div id="download-resume">
+    <a href="https://drive.google.com/file/d/1aaQsMdIF_-kTJ8_piBLiBHmQTPwfodI1/view?usp=sharing" class="btn-download" download>Download Resume</a>
+  </div>
+</section>
+
+    
+      <!-- Contact Section -->
+      <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <p>Email: malikakanksha27@gmail.com</p>
+        <p>Phone: +91 8924051060</p>
+        <p>Location: UTTRAKHAND,INDIA</p>
+      </section>
+    
+      <footer>
+        &copy; 2025 Akanksha Malik. All rights reserved.
+      </footer>
